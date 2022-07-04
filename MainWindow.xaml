@@ -1,0 +1,112 @@
+﻿<Window x:Class="laboratornie_raboti.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        
+        xmlns:local="clr-namespace:laboratornie_raboti"
+        mc:Ignorable="d"
+      
+        Title="MainWindow" Height="450" Width="800">
+
+        <DockPanel LastChildFill="True" RenderTransformOrigin="0.525,0.524"  >
+        <DockPanel DockPanel.Dock="Left" Width="150" LastChildFill="False" >
+            <ComboBox DropDownClosed="dropDown1"  Background="Silver" SelectionChanged="leftmouse1"  DockPanel.Dock="Top" Name="labsList_Malch" Width="150" Height="30" VerticalAlignment="Top" Text="лаб-раб ТИЭ" IsEditable="true" IsReadOnly="true">
+                <ComboBox.Items   >
+                    <ComboBoxItem Name="item11" >
+                        <TextBlock>лабораторная 1</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="item12" >
+                        <TextBlock>лабораторная 2</TextBlock>
+                    </ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+
+            <ComboBox DropDownClosed="dropDown2" BorderBrush="Silver" Background="Silver" SelectionChanged="leftmouse2" DockPanel.Dock="Top" Name="labsList_Max" Width="150" Height="30" VerticalAlignment="Top" Text="лаб-раб МСКС" IsEditable="true" IsReadOnly="true">
+                <ComboBox.Items>
+                    <ComboBoxItem Name="item21" >
+                        <TextBlock>лабораторная 1</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="item22">
+                        <TextBlock>лабораторная 2</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="item23">
+                        <TextBlock>лабораторная 3</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="item24">
+                        <TextBlock>лабораторная 4</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="item25">
+                        <TextBlock>лабораторная 5</TextBlock>
+                    </ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+            <Button Width="150" DockPanel.Dock="Bottom" Height="20" BorderBrush="Black" Click="exit_click" Name="exit" >выход</Button>
+        </DockPanel>
+
+
+        <Grid  >
+            <UserControl Visibility="Visible" Margin="10, 10, 10 ,10" Name="lab1_TE" >
+                <Border CornerRadius="8,8,8,8"  BorderBrush="Silver" BorderThickness="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel LastChildFill="False" Grid.Column="0" Grid.Row="0">
+                            <Border MaxWidth="300"   BorderBrush="Silver" BorderThickness="1" DockPanel.Dock="Top">
+                                <TextBlock TextAlignment="Center" Name="lab1_formula_text"  Height="30"></TextBlock>
+                            </Border>
+                            <Border MaxWidth="380"   BorderBrush="Silver" BorderThickness="1" DockPanel.Dock="Bottom">
+                                <ScrollViewer>
+                                    <TextBlock MinHeight="40" TextAlignment="Center" Name="lab1_deltas"  ></TextBlock>
+                                </ScrollViewer>
+                            </Border>
+                        </DockPanel>
+
+                        <DockPanel Margin="5" Grid.Column="0" Grid.Row="3"  LastChildFill="False">
+                            <Button Click="lab1_TE_start" Width="150" Height="30" DockPanel.Dock="Bottom">START</Button>
+                        </DockPanel>
+
+                        <Border BorderBrush="Silver" BorderThickness="1" Grid.Column="1" Grid.Row="0">
+                            <ScrollViewer>
+                                <TextBlock  Name="expText" ></TextBlock>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border BorderBrush="Silver" BorderThickness="1" Grid.Column="1" Grid.Row="1">
+                            <ScrollViewer>
+                                <TextBlock  Name="sinText" ></TextBlock>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border BorderBrush="Silver" BorderThickness="1" Grid.Column="1" Grid.Row="2">
+                            <ScrollViewer>
+                                <TextBlock Name="rezultText"></TextBlock>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Grid Grid.Column="0" Grid.Row="1" Name="plot_grid" >
+
+                        </Grid>
+                    </Grid>
+                </Border>
+            </UserControl>
+
+
+            <UserControl Visibility="Collapsed" Margin="10, 10, 10 ,10" Name="lab2_TE" >
+                <Border  CornerRadius="8,8,8,8"  BorderBrush="Silver" BorderThickness="3">
+                    <Canvas Name="PlotCanvasFell"   SizeChanged ="changeWinSize" >
+                    </Canvas>
+                </Border>
+            </UserControl>
+
+        </Grid>
+    </DockPanel>
+</Window>
